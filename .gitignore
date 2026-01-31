@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# 环境变量文件（核心：防止密钥提交）
+.env
+.env.local
+.env.*.local
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,9 +27,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# .gitignore 新增内容
-# 环境变量文件（核心：防止密钥提交）
-.env
-.env.local
-.env.*.local
