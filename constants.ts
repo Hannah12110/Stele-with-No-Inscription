@@ -48,7 +48,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 3,
     text: "第三问：重回后宫，王皇后与萧淑妃斗得不可开交。为了彻底铲除对手，你甚至不惜利用自己刚出生的女儿，你会？",
-    background: "/assets/bgs/bg_q3.jpg",
+    background: "/assets/bgs/bg_q3_v2.jpg",
     historicalFact: "“小公主暴卒”是武则天夺后之路上的罗生门，王皇后因此被废，武氏由此上位。",
     newCharacters: [
       {
