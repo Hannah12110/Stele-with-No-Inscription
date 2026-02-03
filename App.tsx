@@ -342,40 +342,43 @@ const renderCharacterList = (characters: Character[]) => (
           )}
 
          {gameState === 'result' && (
-          <div className="w-full max-w-5xl space-y-8 animate-fade-in pt-12 md:pt-20 pb-20">
+          <div className="w-full max-w-5xl space-y-6 md:space-y-8 animate-fade-in pt-8 md:pt-20 pb-20">
             <div className="text-center space-y-2 md:space-y-4 relative z-50 px-4">
               <p className="text-[#d4a373] tracking-[0.6em] md:tracking-[1em] font-bold uppercase text-[10px] md:text-sm">天 命 终 结</p>
-              <h2 className="text-4xl md:text-7xl font-weibei text-yellow-500 gold-glow drop-shadow-2xl">
+              <h2 className="text-3xl md:text-7xl font-weibei text-yellow-500 gold-glow drop-shadow-2xl">
                 {ending}
               </h2>
             </div>
 
             <div className="flex flex-col xl:flex-row gap-6 md:gap-8 items-stretch w-full px-4">
-              <div className="w-full xl:w-2/5 order-1 xl:order-2 flex flex-col gap-6">
-                <div className="bg-[#1a140f]/80 backdrop-blur-xl p-6 md:p-8 border-2 border-[#d4a373]/30 rounded-lg shadow-xl flex flex-col items-center min-h-[500px] xl:min-h-[650px] justify-between">
-                  <h3 className="text-[#d4a373] text-base md:text-xl font-bold border-b border-[#d4a373]/20 pb-3 md:pb-4 mb-4 tracking-widest uppercase text-center font-weibei w-full">皇 权 衡 柱</h3>
+              {/* 右侧/上方板块：属性卡与按钮 */}
+              <div className="w-full xl:w-2/5 order-1 xl:order-2 flex flex-col gap-4 md:gap-6">
+                <div className="bg-[#1a140f]/80 backdrop-blur-xl p-5 md:p-8 border-2 border-[#d4a373]/30 rounded-lg shadow-xl flex flex-col items-center justify-between min-h-0 xl:min-h-[650px]">
+                  <h3 className="text-[#d4a373] text-sm md:text-xl font-bold border-b border-[#d4a373]/20 pb-2 md:pb-4 mb-2 md:mb-4 tracking-widest uppercase text-center font-weibei w-full">皇 权 衡 柱</h3>
                   
-                  <div className="flex justify-center items-center py-2 w-full transition-all duration-500">
+                  {/* 雷达图容器：在移动端适当缩小 */}
+                  <div className="flex justify-center items-center w-full py-1 md:py-4 transition-all duration-500 scale-90 md:scale-100">
                     <AttributeRadar attributes={attributes} />
                   </div>
 
-                  <div className="mt-4 p-4 md:p-6 bg-stone-900/80 border-l-2 border-[#d4a373] rounded-r-sm w-full">
-                    <p className="text-[#d4a373] text-[9px] tracking-[0.1em] font-bold mb-2 md:mb-3 uppercase font-serif">✦ 史 官 简 评</p>
-                    <p className="text-stone-200 text-sm md:text-lg font-weibei italic leading-relaxed">
+                  <div className="mt-2 md:mt-4 p-3 md:p-6 bg-stone-900/80 border-l-2 border-[#d4a373] rounded-r-sm w-full">
+                    <p className="text-[#d4a373] text-[9px] tracking-[0.1em] font-bold mb-1 md:mb-3 uppercase font-serif">✦ 史 官 简 评</p>
+                    <p className="text-xs md:text-lg font-weibei italic leading-relaxed text-stone-200">
                       “{getEvaluation()}”
                     </p>
                   </div>
                 </div>
                 
-                <button onClick={resetGame} className="w-full py-4 md:py-6 bg-black/40 backdrop-blur-md border-2 border-[#d4a373] text-[#d4a373] hover:bg-[#d4a373] hover:text-stone-900 transition-all text-base md:text-xl font-bold font-weibei tracking-[0.3em] md:tracking-[0.4em] shadow-lg">
+                <button onClick={resetGame} className="w-full py-4 md:py-6 bg-black/40 backdrop-blur-md border-2 border-[#d4a373] text-[#d4a373] hover:bg-[#d4a373] hover:text-stone-900 transition-all text-sm md:text-xl font-bold font-weibei tracking-[0.3em] md:tracking-[0.4em] shadow-lg">
                   再 启 尘 封 之 史
                 </button>
               </div>
 
+              {/* 左侧/下方板块：碑文 */}
               <div className="w-full xl:w-3/5 order-2 xl:order-1 flex flex-col">
-                <div className="tombstone-texture p-6 pt-12 md:p-16 border-y-8 border-[#d4a373]/20 h-full flex justify-center items-center bg-stone-900/70 backdrop-blur-lg shadow-inner overflow-x-auto relative z-10 no-scrollbar">
+                <div className="tombstone-texture p-6 pt-10 md:p-16 border-y-8 border-[#d4a373]/20 min-h-[350px] md:min-h-[500px] xl:h-full flex justify-center items-center bg-stone-900/70 backdrop-blur-lg shadow-inner overflow-x-auto relative z-10 no-scrollbar">
                   {ending !== EndingType.BLANK_SLATE && (
-                    <div className="writing-vertical-rl text-[#fefae0] text-xl md:text-4xl leading-[1.8] md:leading-[2.2] font-weibei opacity-90 py-8 min-w-max">
+                    <div className="writing-vertical-rl text-[#fefae0] text-lg md:text-4xl leading-[1.8] md:leading-[2.2] font-weibei opacity-90 py-4 md:py-8 min-w-max">
                       <p className="whitespace-pre-wrap tracking-[0.15em]">{inscription}</p>
                     </div>
                   )}
