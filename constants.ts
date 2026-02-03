@@ -107,7 +107,7 @@ export const QUESTIONS: Question[] = [
         name: "李贤",
         title: "章怀太子",
         bio: "武后次子，才华横溢却与母后在权力分配上存在深刻矛盾。",
-        wikiUrl: "https://baike.baidu.com/item/%E6%9D%8E%E8%B4%A4/21611"
+        wikiUrl: "https://baike.baidu.com/item/%E6%9D%8E%E8%B4%A4/2161"
       },
       {
         name: "狄仁杰",
@@ -183,7 +183,7 @@ export const QUESTIONS: Question[] = [
         name: "来俊臣",
         title: "酷吏之首",
         bio: "《罗织经》作者，极度残忍，是你随时可弃的棋子。",
-        wikiUrl: "https://baike.baidu.com/item/%E6%9D%8E%E4%BF%8A%E8%87%A3/430467"
+        wikiUrl: "https://baike.baidu.com/item/%E6%9D%A5%E4%BF%8A%E8%87%A3/430467"
       }
     ],
     options: [

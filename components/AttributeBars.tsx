@@ -15,11 +15,13 @@ const AttributeBars: React.FC<Props> = ({ attributes, diffs }) => {
   ];
 
   return (
-    <div className="flex flex-wrap gap-4 md:gap-6">
+    /* 修改点：将 flex 改为 grid。grid-cols-2 保证手机端两列，md:flex 保证电脑端恢复单行平铺 */
+    <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-6">
       {categories.map((cat) => {
         const change = diffs ? diffs[cat.idx] : 0;
         return (
-          <div key={cat.key} className="flex flex-col gap-1 w-20 md:w-28 relative">
+          /* 修改点：手机端 w-full 撑开 grid 格子，md:w-28 恢复电脑端固定宽度 */
+          <div key={cat.key} className="flex flex-col gap-1 w-full md:w-28 relative">
             <div className="flex justify-between text-[10px] md:text-xs font-bold text-stone-400">
               <span>{cat.label}</span>
               <span className="text-yellow-600">{cat.value}</span>
