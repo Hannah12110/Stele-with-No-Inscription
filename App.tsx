@@ -42,10 +42,15 @@ const App: React.FC = () => {
 
   // --- 动态背景逻辑 ---
   const getBackgroundImage = () => {
-    if (gameState === 'start') return "/assets/bgs/bg_start.jpg";
-    if (gameState === 'playing' || gameState === 'calculating') return currentQuestion.background;
-    if (gameState === 'result') return "/assets/bgs/bg_result.jpg";
-    return "/assets/bgs/bg_start.jpg";
+    if (gameState === 'start') return "assets/bgs/bg_start.jpg";
+    if (gameState === 'playing' || gameState === 'calculating') {
+      // 确保路径不以 / 开头，如果是从 constants 引用的路径带有 / 则进行去除
+      return currentQuestion.background.startsWith('/') 
+        ? currentQuestion.background.substring(1) 
+        : currentQuestion.background;
+    }
+    if (gameState === 'result') return "assets/bgs/bg_result.jpg";
+    return "assets/bgs/bg_start.jpg";
   };
 
   // --- 史官评价逻辑 ---
