@@ -409,3 +409,4 @@ const renderCharacterList = (characters: Character[]) => (
 };
 
 export default App;
+
