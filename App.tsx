@@ -226,7 +226,10 @@ const App: React.FC = () => {
             
             <div className="relative z-50 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-[#d4a373]/20 pb-6 gap-4">
               <span className="text-[#d4a373] font-bold tracking-widest text-lg font-weibei">第 {currentQuestionIndex + 1} / 10 抉择</span>
-              <AttributeBars attributes={attributes} diffs={currentDiffs} />
+              {/* 修改点：优化容器布局，移动端 grid-cols-2 实现两行两列 */}
+              <div className="w-full md:w-auto grid grid-cols-2 md:grid-cols-1 gap-4 md:gap-0">
+                <AttributeBars attributes={attributes} diffs={currentDiffs} />
+              </div>
             </div>
 
             {/* 修改点：将 duration-200 修改为 duration-75 极速切换 */}
