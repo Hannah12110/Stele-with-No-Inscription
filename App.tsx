@@ -40,17 +40,23 @@ const App: React.FC = () => {
 
   const currentQuestion = QUESTIONS[currentQuestionIndex];
 
-  // --- 动态背景逻辑 ---
+  // --- 动态背景逻辑 (已修改图片引用逻辑) ---
   const getBackgroundImage = () => {
-    if (gameState === 'start') return "assets/bgs/bg_start.jpg";
+    // 自动获取 vite.config.ts 中的 base 路径
+    const baseUrl = import.meta.env.BASE_URL;
+    
+    // 辅助函数：确保路径拼接时不会出现双斜杠
+    const formatPath = (path: string) => {
+      const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+      return `${baseUrl}${cleanPath}`;
+    };
+
+    if (gameState === 'start') return formatPath("assets/bgs/bg_start.jpg");
     if (gameState === 'playing' || gameState === 'calculating') {
-      // 确保路径不以 / 开头，如果是从 constants 引用的路径带有 / 则进行去除
-      return currentQuestion.background.startsWith('/') 
-        ? currentQuestion.background.substring(1) 
-        : currentQuestion.background;
+      return formatPath(currentQuestion.background);
     }
-    if (gameState === 'result') return "assets/bgs/bg_result.jpg";
-    return "assets/bgs/bg_start.jpg";
+    if (gameState === 'result') return formatPath("assets/bgs/bg_result.jpg");
+    return formatPath("assets/bgs/bg_start.jpg");
   };
 
   // --- 史官评价逻辑 ---
